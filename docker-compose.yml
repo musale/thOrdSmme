@@ -5,4 +5,13 @@ services:
     volumes:
       - ./:/app
     ports:
-      - "3000:3000"
+      - "5000:5000"
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    command: npm run docker
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
